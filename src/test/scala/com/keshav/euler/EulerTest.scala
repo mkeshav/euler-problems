@@ -497,5 +497,15 @@ class EulerTest extends FunSuite with Matchers {
     sum1to99 + sum100to999 + "onethousand".length should be(21124)
     (1 to 1000).map(speak(_)).map(_.trim.split(" ").mkString.length).sum should be(21124)
   }
+
+  test("Modulo 10 check digit") {
+    val x = "139".map(_.toString).reverse.zipWithIndex.map {
+      e: (String, Int) => (e._1.toInt, e._2+1)
+    }.map {
+      v => if (v._2 % 2 != 0) v._1 * 2 else v._1
+    }.flatMap(_.toString.toList).map(_.toInt - 48).sum % 10 // Subtract 48 to get actual value as char to int will be ascii value
+
+    10 - x should be(6)
+  }
 }
 
