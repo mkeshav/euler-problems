@@ -25,15 +25,18 @@ object Euler {
     case 0 => (b, 0, 1)
     case _ =>
       val (g, x, y) = egcd(b % a, a)
-      (g, y - (b/a) * x, x)
+      val q = b / a
+      (g, y - q * x, x)
   }
 
   def mulinv(b: Long, n: Long): Long = {
     val (g, x, _) = egcd(b, n)
-    if (g == 1) x % n else 0
+    //((dividend % divisor) + divisor) % divisor is the right way to do negative modulo
+    if (g == 1) ((x % n) + n) % n else 0
   }
 
   def crt(n: List[Int], a: List[Int]): Long = {
+    require(coprimes(n))
     val product = n.product
     val sum = n.zip(a).map {
       v =>
