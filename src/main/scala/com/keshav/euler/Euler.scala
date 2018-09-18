@@ -21,6 +21,36 @@ object Euler {
     case _ => gcf(b, a % b)
   }
 
+  def egcd(a: Long, b: Long): (Long, Long, Long) = a match {
+    case 0 => (b, 0, 1)
+    case _ =>
+      val (g, x, y) = egcd(b % a, a)
+      (g, y - (b/a) * x, x)
+  }
+
+  def mulinv(b: Long, n: Long): Long = {
+    val (g, x, _) = egcd(b, n)
+    if (g == 1) x % n else 0
+  }
+
+  def crt(n: List[Int], a: List[Int]): Long = {
+    val product = n.product
+    val sum = n.zip(a).map {
+      v =>
+        val (ni, ai) = v
+        val p = product / ni
+        ai * mulinv(p, ni) * p
+    }.sum
+
+    sum % product
+  }
+
+  def coprimes(l: List[Int]): Boolean = {
+    !l.combinations(2).toList.map {
+      case Seq(x, y) => gcf(x, y)
+    }.exists(_ != 1)
+  }
+
   def lcm(a: Long, b: Long):Long = (a*b)/gcf(a, b)
 
   def nextPrime(seed: Int): Int = Iterator.from(seed + 1).find(isPrime(_)).get

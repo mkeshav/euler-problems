@@ -507,5 +507,12 @@ class EulerTest extends FunSuite with Matchers {
 
     10 - x should be(6)
   }
+
+  test("Chinese Remainder Theorem(CRT") {
+    val n = List(3, 5, 7)
+    val a = List(2, 3, 2)
+    coprimes(n) should be(true)
+    crt(n, a) should be(23)
+  }
 }
 
