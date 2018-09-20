@@ -9,6 +9,7 @@ object Euler {
 
   def isPalindrome(s: String): Boolean = s.reverse == s
 
+  //haskell: let fibs = 1:1:zipWith (+) (fibs) (tail fibs); take 1 $ drop 999 fibs
   val fibs: Stream[Int] = 0 #:: fibs.scanLeft(1)(_ + _)
 
   def primeFactors(num: Long): List[Long] = {
