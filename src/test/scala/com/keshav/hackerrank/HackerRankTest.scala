@@ -32,4 +32,10 @@ class HackerRankTest extends FunSuite with Matchers {
 
     plusMinus(Array(0, 1, 29, 0, 4, 1)).foreach(v => println(v.toString.padTo(8, "0").mkString))
   }
+
+  test("epowx") {
+    epowx(20.0000) should be(2423600.1887)
+    epowx(5.0000) should be(143.6895)
+    epowx(-0.5000) should be(0.6065)
+  }
 }

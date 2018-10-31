@@ -32,5 +32,9 @@ object HackerRank {
     (gpd.toList ++ base).groupBy(_._1).mapValues(v => v.map(_._2).sum).toList.sortBy(_._1).map(_._2)
   }
 
+  def epowx(n: Double) = {
+    roundAt(4) (1 + (1 to 9 map { i => (math pow(n, i)) / (1 to i).product}).sum)
+  }
+
   private def roundAt(p: Int)(n: Double): Double = { val s = math pow (10, p); (math round n * s) / s }
 }
