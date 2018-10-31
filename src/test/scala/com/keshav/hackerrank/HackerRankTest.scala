@@ -38,4 +38,31 @@ class HackerRankTest extends FunSuite with Matchers {
     epowx(5.0000) should be(143.6895)
     epowx(-0.5000) should be(0.6065)
   }
+
+  test("winner") {
+    val andrea = List(1, 2, 3)
+    val maria = List(2, 1, 3)
+    
+    oddEvenGameScore(andrea, maria, "Odd")
+  }
+
+  test("match Array") {
+    val a = List(123, 543)
+    val m = List(321, 279)
+    val result = a.zip(m).flatMap {
+      e =>
+        e._1.toString.zip(e._2.toString).map {
+          x =>
+            Math.abs(x._1 - x._2)
+        }
+    }.sum
+    result should be(16)
+  }
+
+  test("print longest even word") {
+    "It is a pleasant day today"
+      .split(" ").map(w => (w, w.length)).filter(_._2 % 2 == 0).minBy(-_._2)._1 should be("pleasant")
+    "write code for great time"
+      .split(" ").map(w => (w, w.length)).filter(_._2 % 2 == 0).head._1 should be("code")
+  }
 }

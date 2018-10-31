@@ -44,5 +44,17 @@ object HackerRank {
     }.fold(arr)((x, y) => x.zip(y).map(e => e._1 + e._2))
     result.max
   }
+
+  def oddEvenGameScore(andrea: List[Int], maria: List[Int], s: String): String = {
+    val result = s match {
+      case "Even" =>
+        val scores = andrea.zip(maria).zipWithIndex.map {case (e:(Int, Int), y: Int) => (e._1 - e._2, e._2 - e._1, y)}.filter(_._3 % 2 == 0)
+        (scores.map(_._1).sum, scores.map(_._2).sum)
+      case "Odd" =>
+        val scores = andrea.tail.zip(maria.tail).zipWithIndex.map {case (e:(Int, Int), y: Int) => (e._1 - e._2, e._2 - e._1, y)}
+        (scores.map(_._1).sum, scores.map(_._2).sum)
+    }
+    if (result._1 > result._2) "Andrea" else if (result._2 > result._1) "Maria" else "Tie"
+  }
   private def roundAt(p: Int)(n: Double): Double = { val s = math pow (10, p); (math round n * s) / s }
 }
