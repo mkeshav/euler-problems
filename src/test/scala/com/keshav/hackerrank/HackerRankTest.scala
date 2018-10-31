@@ -3,6 +3,8 @@ package com.keshav.hackerrank
 import org.scalatest.{FunSuite, Matchers}
 import HackerRank._
 
+import scala.io.Source
+
 class HackerRankTest extends FunSuite with Matchers {
   test("triplet compare") {
     val a = Array(1, 2, 3)
@@ -42,7 +44,7 @@ class HackerRankTest extends FunSuite with Matchers {
   test("winner") {
     val andrea = List(1, 2, 3)
     val maria = List(2, 1, 3)
-    
+
     oddEvenGameScore(andrea, maria, "Odd")
   }
 
@@ -64,5 +66,12 @@ class HackerRankTest extends FunSuite with Matchers {
       .split(" ").map(w => (w, w.length)).filter(_._2 % 2 == 0).minBy(-_._2)._1 should be("pleasant")
     "write code for great time"
       .split(" ").map(w => (w, w.length)).filter(_._2 % 2 == 0).head._1 should be("code")
+  }
+
+  test("array manipulation") {
+    val source = Source.fromResource("array_manipulation_input.txt").getLines()
+    val n = source.next().split(" ").toList.head
+    val queries = source.toList.tail.map(_.split(" ").toList.map(_.toInt))
+    arrayManipulationIterative(n.toInt, queries) should be(7542539201L)
   }
 }

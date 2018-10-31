@@ -36,13 +36,22 @@ object HackerRank {
     roundAt(4) (1 + (1 to 9 map { i => (math pow(n, i)) / (1 to i).product}).sum)
   }
 
-  def arrayManipulation(n: Int, queries: List[List[Int]]): Int = {
-    val arr = Seq.fill(n)(0)
-    val result = queries.map {
-      case List(i, j, summand) =>
-        arr.slice(0, i-1) ++ arr.slice(i-1, j).map(_ + summand) ++ arr.slice(j, n)
-    }.fold(arr)((x, y) => x.zip(y).map(e => e._1 + e._2))
-    result.max
+  def arrayManipulationIterative(n: Int, queries: List[List[Int]]): Long = {
+    val arr = Seq.fill(n+1)(0).toArray
+
+    queries.foreach { q =>
+      val List(start, finish, summand) = q
+      arr(start - 1) += summand
+      arr(finish) -= summand
+    }
+
+    var tmp, max = 0L
+    arr.foreach {
+      v =>
+        tmp += v
+        max = if (max < tmp) tmp else max
+    }
+    max
   }
 
   def oddEvenGameScore(andrea: List[Int], maria: List[Int], s: String): String = {

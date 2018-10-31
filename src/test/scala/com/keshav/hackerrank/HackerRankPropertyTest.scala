@@ -26,7 +26,7 @@ class HackerRankPropertyTest extends PropSpec with PropertyChecks with Matchers 
     )
 
     forAll(scores) { (n:Int, q:List[List[Int]], max: Int) =>
-      arrayManipulation(n, q) should be(max)
+      arrayManipulationIterative(n, q) should be(max)
     }
   }
 }
