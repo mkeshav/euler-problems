@@ -17,4 +17,16 @@ class HackerRankPropertyTest extends PropSpec with PropertyChecks with Matchers 
       maxScoreOfVincent(v.length, v, c) should be(expectedScore)
     }
   }
+
+  property("Array Manipulation") {
+    val scores = Table(
+      ("n", "queries", "max"),
+      (5, List(List(1, 2, 100), List(2, 5, 100), List(3, 4, 100)), 200),
+      (10, List(List(1, 5, 3), List(4, 8, 7), List(6, 9, 1)), 10),
+    )
+
+    forAll(scores) { (n:Int, q:List[List[Int]], max: Int) =>
+      arrayManipulation(n, q) should be(max)
+    }
+  }
 }

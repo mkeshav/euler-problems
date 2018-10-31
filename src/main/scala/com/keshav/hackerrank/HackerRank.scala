@@ -36,5 +36,13 @@ object HackerRank {
     roundAt(4) (1 + (1 to 9 map { i => (math pow(n, i)) / (1 to i).product}).sum)
   }
 
+  def arrayManipulation(n: Int, queries: List[List[Int]]): Int = {
+    val arr = Seq.fill(n)(0)
+    val result = queries.map {
+      case List(i, j, summand) =>
+        arr.slice(0, i-1) ++ arr.slice(i-1, j).map(_ + summand) ++ arr.slice(j, n)
+    }.fold(arr)((x, y) => x.zip(y).map(e => e._1 + e._2))
+    result.max
+  }
   private def roundAt(p: Int)(n: Double): Double = { val s = math pow (10, p); (math round n * s) / s }
 }
