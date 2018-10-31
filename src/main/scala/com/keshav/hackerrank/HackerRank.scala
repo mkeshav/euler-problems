@@ -25,10 +25,11 @@ object HackerRank {
     Math.abs(sums._2 - sums._1)
   }
 
-  def plusMinus(arr: Array[Int]): List[(String, Double)] = {
+  def plusMinus(arr: Array[Int]): List[Double] = {
     val n = arr.length
-    val gpd = arr.map(e => if (e == 0) "c" else if (e > 0) "a" else "b").toList.groupBy(identity).mapValues(v => roundAt(6)(v.size / n.toDouble))
-    gpd.toList.sortBy(_._1)
+    val base = List(1 -> 0.0, 2 -> 0.0, 3 -> 0.0)
+    val gpd = arr.map(e => if (e > 0) 1 else if (e < 0) 2 else 3).toList.groupBy(identity).mapValues(v => roundAt(6)(v.size / n.toDouble))
+    (gpd.toList ++ base).groupBy(_._1).mapValues(v => v.map(_._2).sum).toList.sortBy(_._1).map(_._2)
   }
 
   private def roundAt(p: Int)(n: Double): Double = { val s = math pow (10, p); (math round n * s) / s }

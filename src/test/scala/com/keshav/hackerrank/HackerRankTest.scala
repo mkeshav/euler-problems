@@ -28,7 +28,8 @@ class HackerRankTest extends FunSuite with Matchers {
   }
 
   test("plus minus") {
-    val arr = Array(-4, 3, -9, 0, 4, 1)
-    plusMinus(arr).foreach(v => println(v._2.toString.padTo(8, "0").mkString))
+    plusMinus(Array(-4, 3, -9, 0, 4, 1)) should be(Array(0.5, 0.333333, 0.166667))
+
+    plusMinus(Array(0, 1, 29, 0, 4, 1)).foreach(v => println(v.toString.padTo(8, "0").mkString))
   }
 }
