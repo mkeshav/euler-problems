@@ -65,5 +65,9 @@ object HackerRank {
     }
     if (result._1 > result._2) "Andrea" else if (result._2 > result._1) "Maria" else "Tie"
   }
+
+  def reverseListFold[A](a: List[A]): List[A] = {
+    a.foldLeft(List.empty[A])((x: List[A], y: A) => y :: x)
+  }
   private def roundAt(p: Int)(n: Double): Double = { val s = math pow (10, p); (math round n * s) / s }
 }

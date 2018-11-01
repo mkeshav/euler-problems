@@ -74,4 +74,46 @@ class HackerRankTest extends FunSuite with Matchers {
     val queries = source.toList.tail.map(_.split(" ").toList.map(_.toInt))
     arrayManipulationIterative(n.toInt, queries) should be(7542539201L)
   }
+
+  test("reverse") {
+    reverseListFold(List(1, 2, 3)) should be(List(3, 2, 1))
+    reverseListFold(List("hello", "world")) should be(List("world", "hello"))
+  }
+
+  test("hour glass") {
+    /*
+      generate hour glass
+      16 hour glasses in 6X6
+      1 1 1  1 1 0
+        1      0
+      1 1 1  1 1 0
+    */
+
+    val mat = Array(
+      Array(1, 1, 1, 0, 0, 0),
+      Array(0, 1, 0, 0, 0, 0),
+      Array(1, 1, 1, 0, 0, 0),
+      Array(0, 0, 2, 4, 4, 0),
+      Array(0, 0, 0, 2, 0, 0),
+      Array(0, 0, 1, 2, 4, 0)
+    )
+
+    val mat1 = List(
+      List(-9, -9, -9, 1, 1, 1),
+      List(0, -9, 0, 4, 3, 2),
+      List(-9, -9, -9, 1, 2, 3),
+      List(0, 0, 8, 6, 6, 0),
+      List(0, 0, 0, -2, 0, 0),
+      List(0, 0, 1, 2, 4, 0)
+    )
+
+    val result = for (i <- 0 until 4) yield {
+      for (j <- 0 until 4) yield {
+        (mat(i).slice(j, j+3) +: Array(mat(i+1)(j+1)) +: Array(mat(i+2).slice(j, j+3))).flatten
+      }.sum
+    }
+
+    println(result)
+    println(result.map(_.max).max)
+  }
 }
