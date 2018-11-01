@@ -69,5 +69,10 @@ object HackerRank {
   def reverseListFold[A](a: List[A]): List[A] = {
     a.foldLeft(List.empty[A])((x: List[A], y: A) => y :: x)
   }
+
+  def filterWithFold[A](f: A => Boolean)(arr: List[A]): List[A] = {
+    arr.foldLeft(List.empty[A])((x: List[A], y: A) => if (f(y)) x :+ y else x)
+  }
+
   private def roundAt(p: Int)(n: Double): Double = { val s = math pow (10, p); (math round n * s) / s }
 }
