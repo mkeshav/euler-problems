@@ -1,10 +1,11 @@
 package com.keshav.hackerrank
 
+import com.keshav.hackerrank.HackerRank._
 import org.scalatest.{FunSuite, Matchers}
-import HackerRank._
 
+import scala.compat.Platform
 import scala.io.Source
-
+import scala.util.Random
 class HackerRankTest extends FunSuite with Matchers {
   test("triplet compare") {
     val a = Array(1, 2, 3)
@@ -74,10 +75,10 @@ class HackerRankTest extends FunSuite with Matchers {
   }
 
   test("array manipulation") {
-    val source = Source.fromResource("array_manipulation_input_tc4.txt").getLines()
+    val source = Source.fromResource("array_manipulation_input_tc7.txt").getLines()
     val n = source.next().split(" ").toList.head
-    val queries = source.toList.tail.map(_.split(" ").toList.map(_.toInt))
-    arrayManipulationIterative(n.toInt, queries) should be(7542539201L)
+    val queries = source.toList.map(_.split(" ").toList.map(_.toInt))
+    arrayManipulationIterative(n.toInt, queries) should be(2497169732L)
   }
 
   test("reverse") {
@@ -130,5 +131,17 @@ class HackerRankTest extends FunSuite with Matchers {
     val ss = List("ab", "ab", "abc")
     val qs = List("ab", "abc", "bc")
     println(qs.map(q => ss.count(s => s == q)))
+  }
+
+  test("Perf characteristics of sequences over arrays") {
+    val t1 = Platform.currentTime
+    Array.fill(10000000)(0)
+    val t2 = Platform.currentTime
+    println(s"Took ${t2 - t1} ms")
+
+    val t3 = Platform.currentTime
+    List.fill(10000000)(0)
+    val t4 = Platform.currentTime
+    println(s"Took ${t4 - t3} ms")
   }
 }

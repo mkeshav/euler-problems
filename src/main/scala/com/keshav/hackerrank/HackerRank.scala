@@ -37,7 +37,7 @@ object HackerRank {
   }
 
   def arrayManipulationIterative(n: Int, queries: List[List[Int]]): Long = {
-    val arr = Seq.fill(n+1)(0).toArray
+    val arr = Array.fill(n+1)(0)
 
     queries.foreach { q =>
       val List(start, finish, summand) = q
