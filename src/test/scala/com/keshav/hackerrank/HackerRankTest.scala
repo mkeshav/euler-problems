@@ -116,4 +116,8 @@ class HackerRankTest extends FunSuite with Matchers {
     println(result)
     println(result.map(_.max).max)
   }
+
+  test("list rotation") {
+    rotateList(List(1, 2, 3, 4, 5), 4) should be(List(5, 1, 2 ,3 ,4))
+  }
 }
