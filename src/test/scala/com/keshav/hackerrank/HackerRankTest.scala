@@ -68,8 +68,13 @@ class HackerRankTest extends FunSuite with Matchers {
       .split(" ").map(w => (w, w.length)).filter(_._2 % 2 == 0).head._1 should be("code")
   }
 
+  test("array manipulation - print") {
+    val queries = List(List(1, 2, 100), List(2, 5, 100), List(3, 4, 100))
+    arrayManipulationIterative(5, queries) should be(200)
+  }
+
   test("array manipulation") {
-    val source = Source.fromResource("array_manipulation_input.txt").getLines()
+    val source = Source.fromResource("array_manipulation_input_tc4.txt").getLines()
     val n = source.next().split(" ").toList.head
     val queries = source.toList.tail.map(_.split(" ").toList.map(_.toInt))
     arrayManipulationIterative(n.toInt, queries) should be(7542539201L)
@@ -119,5 +124,11 @@ class HackerRankTest extends FunSuite with Matchers {
 
   test("list rotation") {
     rotateList(List(1, 2, 3, 4, 5), 4) should be(List(5, 1, 2 ,3 ,4))
+  }
+
+  test("sparse arrays") {
+    val ss = List("ab", "ab", "abc")
+    val qs = List("ab", "abc", "bc")
+    println(qs.map(q => ss.count(s => s == q)))
   }
 }
