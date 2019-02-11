@@ -1,4 +1,4 @@
-FROM openjdk:8-slim as dev
+FROM openjdk:11.0.2-slim as dev
 LABEL Author="Keshav Murthy"
 
 ENV SBT_VERSION 1.2.8
