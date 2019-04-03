@@ -14,6 +14,7 @@ RUN \
   apt-get install -y \
     sbt \
     python-pip jq \
+    wget bsdtar \
     zip unzip
 
 WORKDIR /app
@@ -23,8 +24,11 @@ ADD build.sbt ./
 ADD ./project/plugins.sbt ./project/
 RUN sbt update
 
-# --- Build image
-FROM dev as builder
+ENV SONAR_SCANNER_VERSION 3.3.0.1492
+RUN wget -qO- https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-${SONAR_SCANNER_VERSION}-linux.zip | bsdtar -xvf - -C /usr/local/
+RUN chmod +x /usr/local/sonar-scanner-${SONAR_SCANNER_VERSION}-linux/bin/sonar-scanner
+RUN chmod +x /usr/local/sonar-scanner-${SONAR_SCANNER_VERSION}-linux/jre/bin/java
+RUN ln -s /usr/local/sonar-scanner-${SONAR_SCANNER_VERSION}-linux/bin/sonar-scanner /usr/bin/sonar-scanner
 
 # Build app
 ADD . /app

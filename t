@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-docker-compose run --rm dev sbt test
+docker-compose run --rm euler sbt test
