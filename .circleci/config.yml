@@ -38,9 +38,14 @@ jobs:
       - run: cat /dev/null | sbt test:test
       - store_test_results:
           path: ./target/test-reports
+
       - store_artifacts:
           path: ./target/test-reports
           destination: test-reports
+
+      - store_artifacts:
+          path: ./target/scala-2.12/scoverage-report
+          destination: coverage
 
   sonar_scan:
     machine: true
