@@ -45,7 +45,7 @@ jobs:
 
       - run: cat /dev/null | sbt coverageReport
       - store_artifacts:
-          path: ./target/scala-2\.1.*/scoverage-report
+          path: ./target/scala-2.12/scoverage-report
           destination: coverage-report
 
   sonar_scan:
