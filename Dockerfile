@@ -1,7 +1,8 @@
-FROM openjdk:11.0.2-slim as dev
+FROM adoptopenjdk:8u262-b10-jdk-hotspot as dev
+
 LABEL Author="Keshav Murthy"
 
-ENV SBT_VERSION 1.2.8
+ENV SBT_VERSION 1.3.13
 
 RUN apt-get update && \
     apt-get -y install curl

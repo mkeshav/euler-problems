@@ -4,7 +4,7 @@ name := "euler-problems"
 
 target in assembly := baseDirectory.value
 
-scalaVersion := "2.12.10"
+scalaVersion := "2.12.12"
 
 libraryDependencies ++= Seq(
   "org.scalatest" %% "scalatest" % "3.0.5" % Test,
