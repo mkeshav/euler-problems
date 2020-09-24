@@ -10,8 +10,16 @@ object Euler {
   def isPalindrome(s: String): Boolean = s.reverse == s
 
   //haskell: let fibs = 1:1:zipWith (+) (fibs) (tail fibs); take 1 $ drop 999 fibs
-  val fibs: Stream[Int] = 0 #:: fibs.scanLeft(1)(_ + _)
+  val fibs: Stream[BigInt] = 0 #:: fibs.scan(BigInt(1))(_ + _)
 
+  def fibPisano(n:Int) = {
+    @tailrec
+    def fibTailPisano(n: Int, a: Int, b: Int): Int = n match {
+      case 0 => a
+      case _ => fibTailPisano(n-1, b, (a+b)%1000000)
+    }
+    fibTailPisano(n%1500000, 0, 1)
+  }
   def primeFactors(num: Long): List[Long] = {
     val exists = (2L to math.sqrt(num).toLong).find(num % _ == 0)
     exists.map(d => d :: primeFactors(num/d)).getOrElse(List(num))
