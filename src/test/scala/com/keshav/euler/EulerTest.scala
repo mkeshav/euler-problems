@@ -122,11 +122,12 @@ class EulerTest extends AnyFunSuite with Matchers {
 
     val grid = input.trim.split("\n").map(_.split(" ").map(_.toInt).toList).toList
     val prods = for (
-      x <- 0 until grid.head.length;
-      y <- 0 until grid.length) yield products(x, y, grid)
+      x <- grid.head.indices;
+      y <- grid.indices) yield products(x, y, grid)
 
     println(prods.flatten.max)
   }
+
   test("euler - 12") {
     val triangleNumbersFn = (n: Int) => (1 to n).sum
     val tns = Iterator.from(1).map(triangleNumbersFn)
