@@ -144,4 +144,53 @@ class HackerRankTest extends FunSuite with Matchers {
     val t4 = Platform.currentTime
     println(s"Took ${t4 - t3} ms")
   }
+
+  def tracesAreSimilar(s: Array[Int], t: Array[Int]): String = {
+    if (s.length == t.length) {
+      val diff = s.toSet.intersect(t.toSet).map {
+        v =>
+          s.count(_ == v) - t.count(_ == v)
+      }
+      if (diff.isEmpty) "NO" else {
+        if (diff.reduceOption(math.max).getOrElse(0) <= 3) "YES" else "NO"
+      }
+    } else "NO"
+  }
+
+  def tracesAreSimilarV2(s: Array[Int], t: Array[Int]): String = {
+    if (s.length == t.length) {
+      val s0 = s.groupBy(identity).withDefaultValue(0)
+      val t0 = t.groupBy(identity).withDefaultValue(0)
+      val maxDiff = s0.map {
+        case (_, count) => math.abs(t0 - count)
+      }.reduceOption(math.max)
+      if (maxDiff.getOrElse(0) <= 3) "YES" else "NO"
+    } else "NO"
+  }
+
+  def zipMap(a: Map[String, Int], b: Map[String, Int]): Iterable[(String, Int, Int)] = {
+    val a0 = a.withDefaultValue(0)
+    val b0 = b.withDefaultValue(0)
+    for (key <- a0.keys ++ b0.keys) yield (key, a0(key), b0(key))
+  }
+
+  def counter[T](l: Array[T]) =
+    l.foldLeft(Map[T,Int]() withDefaultValue 0){ (m,x) =>
+      m + (x -> (1 + m(x)))
+    }
+
+  test("Foo") {
+    val sa = Array(2, 7, 4, 8)
+    val sb = Array(2, 6, 10)
+
+//    val sa = Array(2, 4, 6)
+//    val sb = Array(4, 7)
+
+
+    val res = sb.map {
+      s => sa.map(s1 => s - s1).count(_ >= 0)
+    }
+    res.foreach(println)
+  }
+
 }
