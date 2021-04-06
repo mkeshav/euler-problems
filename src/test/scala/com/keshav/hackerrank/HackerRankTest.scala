@@ -1,12 +1,12 @@
 package com.keshav.hackerrank
 
 import com.keshav.hackerrank.HackerRank._
-import org.scalatest.{FunSuite, Matchers}
+import org.scalatest.funsuite.AnyFunSuite
+import org.scalatest.matchers.should.Matchers
 
 import scala.compat.Platform
 import scala.io.Source
-import scala.util.Random
-class HackerRankTest extends FunSuite with Matchers {
+class HackerRankTest extends AnyFunSuite with Matchers {
   test("triplet compare") {
     val a = Array(1, 2, 3)
     val b = Array(3, 2, 1)

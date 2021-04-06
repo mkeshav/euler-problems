@@ -1,11 +1,12 @@
 package com.keshav.hackerrank
 
 import com.keshav.hackerrank.HackerRank._
-import org.scalatest.prop.PropertyChecks
-import org.scalatest.{Matchers, PropSpec}
+import org.scalatest.funsuite.AnyFunSuite
+import org.scalatest.matchers.should.Matchers
+import org.scalatest.prop.TableDrivenPropertyChecks
 
-class HackerRankPropertyTest extends PropSpec with PropertyChecks with Matchers {
-  property("Max score of vincent") {
+class HackerRankPropertyTest extends AnyFunSuite with Matchers with TableDrivenPropertyChecks {
+  test("Max score of vincent") {
     val scores = Table(
       ("vincent", "catherine", "maxScore"),
       ("ACCEDED", "DECADE.", 4),
@@ -18,7 +19,7 @@ class HackerRankPropertyTest extends PropSpec with PropertyChecks with Matchers 
     }
   }
 
-  property("Array Manipulation") {
+  test("Array Manipulation") {
     val scores = Table(
       ("n", "queries", "max"),
       (5, List(List(1, 2, 100), List(2, 5, 100), List(3, 4, 100)), 200),

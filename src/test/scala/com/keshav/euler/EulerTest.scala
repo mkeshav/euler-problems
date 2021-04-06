@@ -1,14 +1,14 @@
 package com.keshav.euler
 
-import java.lang.Math.{ceil, log, sqrt}
-
 import com.keshav.euler.Euler._
-import org.scalatest.{FunSuite, Matchers}
+import org.scalatest.funsuite.AnyFunSuite
+import org.scalatest.matchers.should.Matchers
 
+import java.lang.Math.{ceil, log, sqrt}
 import scala.collection.mutable
 import scala.io.Source
 
-class EulerTest extends FunSuite with Matchers {
+class EulerTest extends AnyFunSuite with Matchers {
   test("euler - 1") {
     (1 to 999).filter(x => x % 3 == 0 || x % 5 == 0).sum should be(233168)
   }
@@ -241,7 +241,7 @@ class EulerTest extends FunSuite with Matchers {
   }
 
   test("euler - 14") {
-    println((1L to 1000000).par.maxBy(collatzSeriesLength))
+    println(((1L to 1000000).toList) .maxBy(collatzSeriesLength))
   }
 
   test("euler - 15") {
