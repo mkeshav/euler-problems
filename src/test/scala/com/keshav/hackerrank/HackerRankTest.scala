@@ -4,7 +4,6 @@ import com.keshav.hackerrank.HackerRank._
 import org.scalatest.funsuite.AnyFunSuite
 import org.scalatest.matchers.should.Matchers
 
-import scala.compat.Platform
 import scala.io.Source
 class HackerRankTest extends AnyFunSuite with Matchers {
   test("triplet compare") {
@@ -134,14 +133,14 @@ class HackerRankTest extends AnyFunSuite with Matchers {
   }
 
   test("Perf characteristics of sequences over arrays") {
-    val t1 = Platform.currentTime
+    val t1 = System.currentTimeMillis()
     Array.fill(10000000)(0)
-    val t2 = Platform.currentTime
+    val t2 = System.currentTimeMillis()
     println(s"Took ${t2 - t1} ms")
 
-    val t3 = Platform.currentTime
-    List.fill(10000000)(0)
-    val t4 = Platform.currentTime
+    val t3 = System.currentTimeMillis()
+    val _ = List.fill(10000000)(0)
+    val t4 = System.currentTimeMillis()
     println(s"Took ${t4 - t3} ms")
   }
 

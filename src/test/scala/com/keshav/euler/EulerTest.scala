@@ -1,5 +1,7 @@
 package com.keshav.euler
 
+import java.lang.Math.{ceil, log, sqrt}
+
 import com.keshav.euler.Euler._
 import org.scalatest.funsuite.AnyFunSuite
 import org.scalatest.matchers.should.Matchers
@@ -7,6 +9,7 @@ import org.scalatest.matchers.should.Matchers
 import java.lang.Math.{ceil, log, sqrt}
 import scala.collection.mutable
 import scala.io.Source
+import scala.collection.parallel.CollectionConverters._
 
 class EulerTest extends AnyFunSuite with Matchers {
   test("euler - 1") {
@@ -38,7 +41,7 @@ class EulerTest extends AnyFunSuite with Matchers {
 
   test("euler - 7") {
     val primes = Iterator.iterate(2)(nextPrime)
-    primes.drop(10000).next should be(104743)
+    primes.drop(10000).next() should be(104743)
   }
 
   test("euler - 8") {

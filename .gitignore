@@ -4,4 +4,6 @@ robot.jar
 target
 .idea
 .bsp
-graalvm-ce-java11*
+graalvm-ce-java11-linux-amd64-*.tar.gz
+euler-problems
+euler-problems.build_artifacts.txt
