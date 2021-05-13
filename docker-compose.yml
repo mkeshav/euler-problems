@@ -6,5 +6,7 @@ services:
       context: .
     volumes:
       - .:/app:cached
+    command: >
+      bash -c "./init_bloop.sh && bash"
     environment:
       - SONAR_CLOUD_TOKEN

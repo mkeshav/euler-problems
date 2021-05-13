@@ -1,19 +1,10 @@
-FROM adoptopenjdk/openjdk11 as dev
-
+FROM hseeberger/scala-sbt:graalvm-ce-21.1.0-java11_1.5.2_2.13.5
 LABEL Author="Keshav Murthy"
 
-ENV SBT_VERSION 1.4.7
-
-RUN apt-get update && \
-    apt-get -y install curl
-
 RUN \
-  curl -L -o sbt-$SBT_VERSION.deb http://dl.bintray.com/sbt/debian/sbt-$SBT_VERSION.deb && \
-  dpkg -i sbt-$SBT_VERSION.deb && \
-  rm sbt-$SBT_VERSION.deb && \
   apt-get update && \
   apt-get install -y \
-    sbt \
+    curl \
     jq \
     wget \
     zip unzip
@@ -31,6 +22,8 @@ RUN unzip /tmp/sonar-scanner-cli-${SONAR_SCANNER_VERSION}-linux.zip -d /usr/loca
 RUN chmod +x /usr/local/sonar-scanner-${SONAR_SCANNER_VERSION}-linux/bin/sonar-scanner
 RUN chmod +x /usr/local/sonar-scanner-${SONAR_SCANNER_VERSION}-linux/jre/bin/java
 RUN ln -s /usr/local/sonar-scanner-${SONAR_SCANNER_VERSION}-linux/bin/sonar-scanner /usr/bin/sonar-scanner
+
+RUN gu install native-image
 
 # Build app
 ADD . /app
