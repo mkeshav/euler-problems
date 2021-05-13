@@ -5,7 +5,6 @@ name := "euler-problems"
 assembly / target  := baseDirectory.value
 
 scalaVersion := "2.13.5"
-scalacOptions += "-language:postfixOps"
 
 libraryDependencies ++= Seq(
   "org.scalatest" %% "scalatest" % "3.2.5" % Test,
