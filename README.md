@@ -1,3 +1,5 @@
+[![CircleCI](https://circleci.com/gh/mkeshav/euler-problems.svg?style=shield)](https://circleci.com/gh/mkeshav/euler-problems)
+
 # euler-problems
 
 Solutions to some euler problems... One life is not enough to get to all of them :)
