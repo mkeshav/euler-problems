@@ -516,5 +516,10 @@ class EulerTest extends AnyFunSuite with Matchers {
     crt(List(3, 5, 7), List(2, 3, 2)) should be(23)
     crt(List(3, 4, 5), List(2, 2, 1 )) should be(26)
   }
+
+  test("foo") {
+    println(List(1, 2).combinations(2).toList)
+    println(coprimes(List(1)))
+  }
 }
 

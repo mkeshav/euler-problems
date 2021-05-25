@@ -4,13 +4,13 @@ import scala.annotation.tailrec
 
 object Euler {
   def isPrime(num: Long): Boolean = {
-    num > 1 && !(2L to math.sqrt(num).toInt).exists(num % _ == 0)
+    num > 1 && !(2L to math.sqrt(num.toDouble).toInt).exists(num % _ == 0)
   }
 
   def isPalindrome(s: String): Boolean = s.reverse == s
 
   //haskell: let fibs = 1:1:zipWith (+) (fibs) (tail fibs); take 1 $ drop 999 fibs
-  val fibs: Stream[BigInt] = 0 #:: fibs.scan(BigInt(1))(_ + _)
+  val fibs: LazyList[BigInt] = 0 #:: fibs.scan(BigInt(1))(_ + _)
 
   def fibPisano(n:Int) = {
     @tailrec
@@ -21,7 +21,7 @@ object Euler {
     fibTailPisano(n%1500000, 0, 1)
   }
   def primeFactors(num: Long): List[Long] = {
-    val exists = (2L to math.sqrt(num).toLong).find(num % _ == 0)
+    val exists = (2L to math.sqrt(num.toDouble).toLong).find(num % _ == 0)
     exists.map(d => d :: primeFactors(num/d)).getOrElse(List(num))
   }
 
@@ -113,7 +113,7 @@ object Euler {
     val factors = primeFactors(num)
     factors.groupBy(identity).map { case (base, group) =>
       val count = group.size
-      (1 - Math.pow(base, count + 1)).toInt / (1 - base)
+      (1 - Math.pow(base.toDouble, count + 1)).toInt / (1 - base)
     }.product - num
   }
 
