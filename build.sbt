@@ -4,7 +4,7 @@ assembly / test := {}
 
 name := "euler-problems"
 
-scalaVersion := "2.13.5"
+scalaVersion := "2.13.6"
 
 scalacOptions ++= Seq("-feature", "-language:postfixOps,higherKinds,implicitConversions", "-unchecked", "-deprecation")
 
