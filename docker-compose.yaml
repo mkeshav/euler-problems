@@ -1,0 +1,28 @@
+version: '3.7'
+
+services:
+  code-server:
+    build:
+      context: .
+      dockerfile: Dockerfile.vscode
+    container_name: code-server
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ='Australia/Melbourne'
+    volumes:
+      - .:/config/workspace
+      - vscode_extensions:/config/extensions
+    ports:
+      - 8443:8443
+    restart: unless-stopped
+
+  euler:
+    build:
+        context: .
+    volumes:
+        - .:/app:cached
+
+volumes:
+  vscode_extensions:
+

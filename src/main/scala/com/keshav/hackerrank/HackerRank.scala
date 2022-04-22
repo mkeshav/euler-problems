@@ -28,8 +28,14 @@ object HackerRank {
   def plusMinus(arr: Array[Int]): List[Double] = {
     val n = arr.length
     val base = List(1 -> 0.0, 2 -> 0.0, 3 -> 0.0)
-    val gpd = arr.map(e => if (e > 0) 1 else if (e < 0) 2 else 3).toList.groupBy(identity).mapValues(v => roundAt(6)(v.size / n.toDouble))
-    (gpd.toList ++ base).groupBy(_._1).mapValues(v => v.map(_._2).sum).toList.sortBy(_._1).map(_._2)
+    val gpd = arr
+                .map{e => if (e > 0) 1 else if (e < 0) 2 else 3}
+                .toList.groupBy(identity)
+                .view.mapValues(v => roundAt(6)(v.size / n.toDouble))
+    (gpd.toList ++ base)
+      .groupBy{_._1}
+      .view.mapValues{v => v.map(_._2).sum}
+      .toList.sortBy(_._1).map(_._2)
   }
 
   def epowx(n: Double) = {

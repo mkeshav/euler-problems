@@ -7,3 +7,6 @@ target
 graalvm-ce-java11-linux-amd64-*.tar.gz
 euler-problems
 euler-problems.build_artifacts.txt
+.metals
+.vscode
+.bloop

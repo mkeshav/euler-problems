@@ -4,7 +4,7 @@ assembly / test := {}
 
 name := "euler-problems"
 
-scalaVersion := "2.13.6"
+scalaVersion := "3.1.1"
 
 scalacOptions ++= Seq("-feature", "-language:postfixOps,higherKinds,implicitConversions", "-unchecked", "-deprecation")
 
@@ -19,7 +19,6 @@ assembly / assemblyMergeStrategy := {
 }
 
 libraryDependencies ++= Seq(
-  "org.scala-lang.modules" %% "scala-parallel-collections" % "1.0.2",
-  "org.scalatest" %% "scalatest" % "3.2.5" % Test,
-  "org.scalacheck" %% "scalacheck" % "1.14.1" % Test
+  "org.scalatest" %% "scalatest" % "3.2.11" % Test,
+  "org.scalacheck" %% "scalacheck" % "1.15.4" % Test
 )

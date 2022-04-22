@@ -9,7 +9,6 @@ import org.scalatest.matchers.should.Matchers
 import java.lang.Math.{ceil, log, sqrt}
 import scala.collection.mutable
 import scala.io.Source
-import scala.collection.parallel.CollectionConverters._
 
 class EulerTest extends AnyFunSuite with Matchers {
   test("euler - 1") {
@@ -504,7 +503,7 @@ class EulerTest extends AnyFunSuite with Matchers {
 
   test("Modulo 10 check digit") {
     val x = "139".map(_.toString).reverse.zipWithIndex.map {
-      e: (String, Int) => (e._1.toInt, e._2+1)
+      (e: (String, Int)) => (e._1.toInt, e._2+1)
     }.map {
       v => if (v._2 % 2 != 0) v._1 * 2 else v._1
     }.flatMap(_.toString.toList).map(_.toInt - 48).sum % 10 // Subtract 48 to get actual value as char to int will be ascii value
