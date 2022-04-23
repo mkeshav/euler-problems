@@ -13,6 +13,7 @@ services:
     volumes:
       - .:/config/workspace
       - vscode_extensions:/config/extensions
+      - ivy2:/config/.ivy2
     ports:
       - 8443:8443
     restart: unless-stopped
@@ -27,4 +28,4 @@ services:
 
 volumes:
   vscode_extensions:
-
+  ivy2:
