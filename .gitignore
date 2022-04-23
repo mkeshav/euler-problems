@@ -10,3 +10,4 @@ euler-problems.build_artifacts.txt
 .metals
 .vscode
 .bloop
+project/project
