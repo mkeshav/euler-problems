@@ -19,9 +19,11 @@ services:
 
   euler:
     build:
-        context: .
+      context: .
     volumes:
-        - .:/app:cached
+      - .:/app:cached
+    environment:
+      - SONAR_CLOUD_TOKEN
 
 volumes:
   vscode_extensions:
