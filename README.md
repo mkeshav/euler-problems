@@ -7,8 +7,5 @@
 Solutions to some euler problems... One life is not enough to get to all of them :)
 
 # Scala 3 and VSCode Metals
+- Install scala Metals
 - Once you start the code server, import the project using metals tab
-
-## Graal vm foo
-
-- `native-image --no-server --no-fallback --allow-incomplete-classpath -jar target/scala-2.13/<jar>`
