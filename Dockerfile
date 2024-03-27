@@ -1,4 +1,4 @@
-FROM hseeberger/scala-sbt:11.0.14.1_1.6.2_3.1.1
+FROM hseeberger/scala-sbt:17.0.2_1.6.2_3.1.1
 LABEL Author="Keshav Murthy"
 
 RUN \
