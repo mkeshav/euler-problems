@@ -19,6 +19,8 @@ assembly / assemblyMergeStrategy := {
 }
 
 libraryDependencies ++= Seq(
-  "org.scalatest" %% "scalatest" % "3.2.11" % Test,
-  "org.scalacheck" %% "scalacheck" % "1.15.4" % Test
+  "com.aparapi" % "aparapi" % "3.0.2",
+
+  "org.scalatest" %% "scalatest" % "3.2.17" % Test,
+  "org.scalacheck" %% "scalacheck" % "1.17.0" % Test
 )
